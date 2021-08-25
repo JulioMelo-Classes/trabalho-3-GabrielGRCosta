@@ -1,12 +1,20 @@
 #include <iostream>
+#include "Snake.h"
+#include "Level.h"
 #include "SnakeGame.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]){
-    SnakeGame game;
-    
-    game.loop(); //bloqueia aqui e só saí quando o jogo termina
 
-    return 0;
+	if (argc < 2){
+		return -1;
+	}
+	string arquivo(argv[1]);
+
+  SnakeGame game(arquivo);
+
+  game.loop();
+
+  return 0;
 }

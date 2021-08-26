@@ -21,10 +21,10 @@ public:
 	Level(string arquivo);
 	Level(string arquivo, Snake* cobra2);
 	
-	void generatefood();
+	void generate_food();
 	void gerar_mapa();
 	pair<int,int> pfood();
-	
+	char check_pos(pair<int,int> pos);
 
 };
 

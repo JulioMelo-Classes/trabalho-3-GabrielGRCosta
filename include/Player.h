@@ -9,11 +9,15 @@ using namespace std;
 
 class Player{
 private:
-	vector <char> direcoes;
+	Snake* cobra;
+	Level* nivel;
+	vector<char> direcoes;
+
 public:
+	Player(Snake* cobra, Level* nivel);
+
 	bool find_solution();
 	char next_move();
 };
-
 
 #endif

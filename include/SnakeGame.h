@@ -4,6 +4,7 @@
 #include <vector>
 #include "Snake.h"
 #include "Level.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ public:
 private:
   Snake cobra;
   Level nivel;
+  Player player;
   int frameCount;
   std::string choice;
   GameStates state;

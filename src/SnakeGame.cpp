@@ -1,5 +1,7 @@
 #include "SnakeGame.h"
+#include "Snake.h"
 #include "Level.h"
+#include "Player.h"
 
 #include <iostream>
 #include <fstream>
@@ -9,7 +11,7 @@
 
 using namespace std;
 
-SnakeGame::SnakeGame(string arquivo) : cobra(arquivo), nivel(arquivo, &cobra) {
+SnakeGame::SnakeGame(string arquivo) : cobra(arquivo), nivel(arquivo, &cobra), player(&cobra, &nivel)  {
   this->choice = "";
   this->frameCount = 0;
 	
@@ -37,15 +39,25 @@ void SnakeGame::update(){
 				state = WAITING_USER;
 				break;
 			}
+			if (this->nivel.check_pos(this->cobra.token()) == '$') {
+				this->nivel.generate_food();
+    		this->cobra.increase();
+			}
+    	this->cobra.move(this->cobra.get_direcao());
 
-			//cantinho do galvao
-			//for(auto& i : {1,2,3,4,5,6,7,8,9,10}){
-				for(int i=0; i<10; i++){ 
-    			this->cobra.move('N');	
-			}	
-			//cantinho do galvao
+			/*
+			if (this->ai.direcoes_empty())
+				this->ai.find_solution();
+			char direcao = this->ai.next_move();
+			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
+				this->nivel.generate_food();
+    		this->cobra.increase();
+			}
+    	this->cobra.move(direcao);
+			*/
 
-			break;
+
+			break;	
 		case WAITING_USER:
 			if (choice == "n"){
 				state = GAME_OVER;

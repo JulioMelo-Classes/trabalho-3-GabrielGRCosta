@@ -22,7 +22,7 @@ public:
 	void increase();
 	bool check_phead(int l, int c);
 	pair<int,int> phead();
-	pair<int,int> token();
+	pair<int,int> token(char oden);
 	char get_direcao();
 	pair<int,int> get_save();
 	int get_vida();

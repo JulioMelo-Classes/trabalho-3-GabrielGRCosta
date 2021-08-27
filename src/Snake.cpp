@@ -43,15 +43,6 @@ Snake::Snake(Snake* parametro){
 void Snake::move(char m){
 	cauda.insert(cauda.begin(), make_pair(cabeca.first,cabeca.second));
 	cauda.pop_back();
-	
-	/*
-	{ (0,0) (0,1) (0,2) (1,2) (1,3) }
-  	  |                      XXX
-			|-----|
-			      V
-	{ (1,0) (0,0) (0,1) (0,2) (1,2) }
-	   NEW
-	*/
 
 	switch(m){
 		case 'N':
@@ -90,8 +81,8 @@ pair<int,int> Snake::phead(){
 	return cabeca;
 }
 
-pair<int,int> Snake::token(){ // A MUDAR! DEVE RECEBER DIRECAO DO AI::NEXT_MOVE()
-	switch(direcao){
+pair<int,int> Snake::token(char oden){ // A MUDAR! DEVE RECEBER DIRECAO DO AI::NEXT_MOVE()
+	switch(oden){
 		case 'N':
 			return make_pair(cabeca.first-1, cabeca.second);
 		case 'S':

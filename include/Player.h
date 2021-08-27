@@ -18,6 +18,7 @@ public:
 
 	bool find_solution();
 	char next_move();
+	bool direcoes_empty();
 };
 
 #endif

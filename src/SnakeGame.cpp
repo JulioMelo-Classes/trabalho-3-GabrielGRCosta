@@ -39,22 +39,21 @@ void SnakeGame::update(){
 				state = WAITING_USER;
 				break;
 			}
-			if (this->nivel.check_pos(this->cobra.token()) == '$') {
+			/*if (this->nivel.check_pos(this->cobra.token()) == '$') {
 				this->nivel.generate_food();
     		this->cobra.increase();
 			}
-    	this->cobra.move(this->cobra.get_direcao());
-
-			/*
-			if (this->ai.direcoes_empty())
-				this->ai.find_solution();
-			char direcao = this->ai.next_move();
+    	this->cobra.move(this->cobra.get_direcao());*/
+			
+			if (this->player.direcoes_empty())
+				this->player.find_solution();
+			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();
     		this->cobra.increase();
 			}
     	this->cobra.move(direcao);
-			*/
+			
 
 
 			break;	

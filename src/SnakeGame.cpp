@@ -43,18 +43,16 @@ void SnakeGame::update(){
 				state = WAITING_USER;
 				break;
 			}*/
-			if(this->nivel.cobra_morre() == true)
+			if(this->nivel.cobra_morre() == true){
 				this->cobra.respawn();
+				break;
+			}
 			if(this->nivel.get_nfood() == this->cobra.get_comida()){
 				state = GAME_OVER;
+				break;
 			}
-			if (this->player.direcoes_empty()){
-				cout<<"Im goign to wait";
-				wait(1000); 
+			if (this->player.direcoes_empty())
 				this->player.find_solution();
-				cout<<"Wait...";
-				wait(1000);
-			}	
 			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();

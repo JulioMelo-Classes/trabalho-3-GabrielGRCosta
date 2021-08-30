@@ -14,12 +14,12 @@ Player::Player(Snake* cobra, Level* nivel){
 
 bool Player::find_solution(){
 	direcoes.clear();
+	int limit=0;
 	std::random_device rd;
 	std::mt19937 mt(rd());
 	std::uniform_int_distribution<int> distrib(0, 3);
 	Snake cobratoken(cobra);
 	do {
-		cout<<"A";
 		int direcao = distrib(mt);
 		switch(direcao){
 			case 0:
@@ -55,17 +55,16 @@ bool Player::find_solution(){
 				direcoes.push_back('N');
 				break;
 		}
-	} while (nivel->pfood() != cobratoken.phead() && direcoes.size() < 500);
+		limit++;
+	} while (nivel->pfood() != cobratoken.phead() && limit < 500);
 
 	if (nivel->pfood() == cobratoken.phead()) {
 		return true;
+	}else{
+    		cobratoken.move(cobratoken.get_direcao());
+    		direcoes.push_back(cobratoken.get_direcao());
+		return false;
 	}
-  while(nivel->check_pos(cobratoken.phead()) != '#' || nivel->check_pos(cobratoken.phead()) != 'o'){
-		cout<<"TEUPAI";
-    cobratoken.move(cobratoken.get_direcao());
-    direcoes.push_back(cobra->get_direcao());
-  }
-	return false;
 }
 
 char Player::next_move(){

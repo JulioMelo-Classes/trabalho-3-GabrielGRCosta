@@ -42,7 +42,7 @@ void Level::generate_food(){
   std::uniform_int_distribution<unsigned> distrib2(0, this->Largura-1); 
   num1=distrib(mt);
 	num2=distrib2(mt);
-	while(Mapa[num1][num2] != ' '){ //Mapa
+	while(Mapa[num1][num2] != ' '){ 
     num1=distrib(mt);
 		num2=distrib2(mt);
 	}
@@ -72,4 +72,15 @@ pair<int,int> Level::pfood(){
 
 char Level::check_pos(pair<int,int> pos){
 	return Mapa[pos.first][pos.second];
+}
+
+int Level::get_nfood(){
+	return NumComidas;
+}
+
+bool Level::cobra_morre(){
+	if(Mapa[cobra->phead().first][cobra->phead().second] == '#' || cobra->check_pbody(cobra->phead())){
+		return true;
+	}
+	return false;
 }

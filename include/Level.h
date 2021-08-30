@@ -25,6 +25,8 @@ public:
 	void gerar_mapa();
 	pair<int,int> pfood();
 	char check_pos(pair<int,int> pos);
+	int get_nfood();
+	bool cobra_morre();
 
 };
 

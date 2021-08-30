@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 Snake::Snake(string arquivo){
 	ifstream file(arquivo);
 	if (!file.is_open()){
@@ -30,6 +31,7 @@ Snake::Snake(string arquivo){
 	file.close();
 
 	this->direcao = 'N';
+	this->Comida = 0;
 }
 
 Snake::Snake(Snake* parametro){
@@ -38,6 +40,10 @@ Snake::Snake(Snake* parametro){
 	this->vida = parametro->get_vida();
 	parametro->copiar_body(&(this->cauda));
 	this->direcao = parametro->get_direcao();
+}
+
+int Snake::get_comida(){
+	return Comida;
 }
 
 void Snake::move(char m){
@@ -66,8 +72,9 @@ void Snake::move(char m){
 
 void Snake::increase(){
 	//cout << "cresceu";
-	cauda.insert(cauda.begin(), make_pair(cabeca.first,cabeca.second));
-	//cauda.push_back(make_pair(cauda.back().first, cauda.back().second));
+	//cauda.insert(cauda.begin(), make_pair(cabeca.first,cabeca.second));
+	cauda.push_back(make_pair(cauda.back().first, cauda.back().second));
+	Comida++;
 }
 
 bool Snake::check_phead(int l, int c){
@@ -123,3 +130,9 @@ void Snake::copiar_body(vector<pair<int,int>>* body){
 	}	
 }
 
+
+void Snake::respawn(){
+	this->vida--;
+	this->cabeca = save_point;
+	this->cauda.clear();
+}

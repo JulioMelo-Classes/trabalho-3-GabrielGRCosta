@@ -13,11 +13,13 @@ private:
 	int vida;
 	vector <pair<int,int>> cauda;
 	char direcao;
+	int Comida;
 
 public:
 	Snake(string arquivo);
 	Snake(Snake* parametro);
 
+	int get_comida();
 	void move(char m);
 	void increase();
 	bool check_phead(int l, int c);
@@ -28,6 +30,7 @@ public:
 	int get_vida();
 	bool check_pbody(pair<int,int> pos);
 	void copiar_body(vector<pair<int,int>>* thiefed);
+	void respawn();
 };
 
 #endif

@@ -32,21 +32,29 @@ void SnakeGame::process_actions(){
 	}
 }
 
+void wait(int ms){
+	this_thread::sleep_for(chrono::milliseconds(ms));
+}
+
 void SnakeGame::update(){
 	switch(state){
-		case RUNNING:
-			if (frameCount>0 && frameCount%10 == 0) {
+		case RUNNING:{ 
+			/*if (frameCount>0 && frameCount%10 == 0) {
 				state = WAITING_USER;
 				break;
+			}*/
+			if(this->nivel.cobra_morre() == true)
+				this->cobra.respawn();
+			if(this->nivel.get_nfood() == this->cobra.get_comida()){
+				state = GAME_OVER;
 			}
-			/*if (this->nivel.check_pos(this->cobra.token()) == '$') {
-				this->nivel.generate_food();
-    		this->cobra.increase();
-			}
-    	this->cobra.move(this->cobra.get_direcao());*/
-			
-			if (this->player.direcoes_empty())
+			if (this->player.direcoes_empty()){
+				cout<<"Im goign to wait";
+				wait(1000); 
 				this->player.find_solution();
+				cout<<"Wait...";
+				wait(1000);
+			}	
 			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();
@@ -56,7 +64,7 @@ void SnakeGame::update(){
 			
 
 
-			break;	
+			break;}	
 		case WAITING_USER:
 			if (choice == "n"){
 				state = GAME_OVER;
@@ -71,9 +79,6 @@ void SnakeGame::update(){
 	}
 }
 
-void wait(int ms){
-	this_thread::sleep_for(chrono::milliseconds(ms));
-}
 
 void clearScreen(){
 //some C++ voodoo here ;D
@@ -110,6 +115,6 @@ void SnakeGame::loop(){
 		process_actions();
 		update();
 		render();
-		wait(1000);
+		wait(200);
 	}
 }

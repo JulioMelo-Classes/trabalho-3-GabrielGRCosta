@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include "Snake.h"
+#include <string>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ private:
 	int Altura;
 	int Largura;
 	int NumComidas;
+	string modo;
 	pair<int,int> save_food;
 	std::vector<std::string> Mapa;
 
@@ -27,6 +29,8 @@ public:
 	char check_pos(pair<int,int> pos);
 	int get_nfood();
 	bool cobra_morre();
+	string get_modo();
+	bool check_mode(string a);
 
 };
 

@@ -10,6 +10,7 @@ using namespace std;
 Player::Player(Snake* cobra, Level* nivel){
 	this->cobra = cobra;
 	this->nivel = nivel;
+	this->score = score;
 }
 
 bool Player::find_solution(){
@@ -78,5 +79,18 @@ bool Player::direcoes_empty(){
 		return true;
 	}
 	return false;
+}
+
+int Player::get_score(){
+	if(direcoes.size() < 5){
+		score += 100;
+	}
+	else if(direcoes.size() > 5 && direcoes.size() < 15){
+		score += 50;
+	}
+	else if(direcoes.size() > 50 && direcoes.size() < 100){
+		score +=2;
+	}
+	return score;
 }
 

@@ -5,7 +5,7 @@
 #include <utility>
 #include "Snake.h"
 #include "Level.h"
-
+#include <string>
 
 using namespace std;
 
@@ -21,7 +21,7 @@ Level::Level(string arquivo, Snake* cobra) {
 	stringstream ss;
 	getline(file, linha);
 	ss<<linha;
-	ss>>this->Altura>>this->Largura>>this->NumComidas;
+	ss>>this->Altura>>this->Largura>>this->NumComidas>>this->modo;
 	while (getline(file, linha)) {
 		this->Mapa.push_back(linha);
 	}
@@ -54,7 +54,7 @@ void Level::gerar_mapa(){
 	for(int i=0; i<this->Altura; i++){
 		for(int j=0; j<this->Largura; j++){
 			if (this->Mapa[i][j] == '*')
-				this->Mapa[i][j] = ' ';// isso aqui pode gerar um bug
+				this->Mapa[i][j] = ' ';
 			if (this->cobra->check_phead(i, j) == true)
 				cout<<'@'; //V < > ^
 			else if (this->cobra->check_pbody(make_pair(i, j)) == true)
@@ -84,3 +84,15 @@ bool Level::cobra_morre(){
 	}
 	return false;
 }
+
+string Level::get_modo(){
+	return modo;
+} 
+
+bool Level::check_mode(string a){
+	if(a == "pacman"){
+		return false;
+	}
+	return true;
+}
+

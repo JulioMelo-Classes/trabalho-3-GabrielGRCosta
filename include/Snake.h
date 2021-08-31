@@ -31,6 +31,7 @@ public:
 	bool check_pbody(pair<int,int> pos);
 	void copiar_body(vector<pair<int,int>>* thiefed);
 	void respawn();
+	void more_food();
 };
 
 #endif

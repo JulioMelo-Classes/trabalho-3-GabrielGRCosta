@@ -12,6 +12,7 @@ private:
 	Snake* cobra;
 	Level* nivel;
 	vector<char> direcoes;
+	int score;
 
 public:
 	Player(Snake* cobra, Level* nivel);
@@ -19,6 +20,7 @@ public:
 	bool find_solution();
 	char next_move();
 	bool direcoes_empty();
+	int get_score();
 };
 
 #endif

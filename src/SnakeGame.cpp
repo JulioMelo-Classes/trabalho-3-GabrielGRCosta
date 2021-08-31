@@ -43,12 +43,16 @@ void SnakeGame::update(){
 				state = WAITING_USER;
 				break;
 			}*/
-			if(this->nivel.cobra_morre() == true){
-				this->cobra.respawn();
+			if(this->cobra.get_vida() == 0){
+				state = GAME_OVER;
 				break;
 			}
 			if(this->nivel.get_nfood() == this->cobra.get_comida()){
 				state = GAME_OVER;
+				break;
+			}
+			if(this->nivel.cobra_morre() == true){
+				this->cobra.respawn();
 				break;
 			}
 			if (this->player.direcoes_empty())
@@ -56,13 +60,14 @@ void SnakeGame::update(){
 			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();
-    		this->cobra.increase();
+				this->cobra.more_food();	
+				if(this->nivel.check_mode(this->nivel.get_modo())){ 
+    					this->cobra.increase();
+				}
 			}
-    	this->cobra.move(direcao);
-			
-
-
-			break;}	
+    			this->cobra.move(direcao);
+			break;
+		}	
 		case WAITING_USER:
 			if (choice == "n"){
 				state = GAME_OVER;

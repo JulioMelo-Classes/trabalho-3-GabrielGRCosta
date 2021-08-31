@@ -74,7 +74,10 @@ void Snake::increase(){
 	//cout << "cresceu";
 	//cauda.insert(cauda.begin(), make_pair(cabeca.first,cabeca.second));
 	cauda.push_back(make_pair(cauda.back().first, cauda.back().second));
-	Comida++;
+}
+
+void Snake::more_food(){
+	this->Comida++;
 }
 
 bool Snake::check_phead(int l, int c){

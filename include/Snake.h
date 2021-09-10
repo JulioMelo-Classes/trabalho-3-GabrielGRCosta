@@ -29,7 +29,7 @@ public:
 	pair<int,int> get_save();
 	int get_vida();
 	bool check_pbody(pair<int,int> pos);
-	void copiar_body(vector<pair<int,int>>* thiefed);
+	void copiar_body(vector<pair<int,int>>* body);
 	void respawn();
 	void more_food();
 };

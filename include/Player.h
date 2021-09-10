@@ -18,6 +18,9 @@ public:
 	Player(Snake* cobra, Level* nivel);
 
 	bool find_solution();
+	bool find_solution2();
+	bool find_solution3(Snake cobrinha, vector <pair<int,int>>&paths);
+	bool test_move(char d, vector <pair<int,int>> &paths,Snake &cobra);
 	char next_move();
 	bool direcoes_empty();
 	int get_score();

@@ -56,7 +56,12 @@ void SnakeGame::update(){
 				break;
 			}
 			if (this->player.direcoes_empty())
+				this->player.find_solution2();
+			if (this->player.direcoes_empty()){
+				cout<<"viado";
+				exit(1);
 				this->player.find_solution();
+			}
 			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();

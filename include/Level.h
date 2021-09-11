@@ -21,7 +21,7 @@ private:
 
 public:
 	Level(string arquivo);
-	Level(string arquivo, Snake* cobra2);
+	Level(string arquivo, Snake* cobra2 );
 	
 	void generate_food();
 	void gerar_mapa();
@@ -31,7 +31,7 @@ public:
 	bool cobra_morre();
 	string get_modo();
 	bool check_mode(string a);
-
+	void imprimir_status();
 };
 
 

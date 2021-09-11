@@ -14,6 +14,7 @@ private:
 	vector <pair<int,int>> cauda;
 	char direcao;
 	int Comida;
+	int score;
 
 public:
 	Snake(string arquivo);
@@ -32,6 +33,8 @@ public:
 	void copiar_body(vector<pair<int,int>>* body);
 	void respawn();
 	void more_food();
+	void add_score(int a);
+	int get_score();
 };
 
 #endif

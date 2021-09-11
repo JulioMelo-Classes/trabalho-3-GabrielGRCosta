@@ -12,8 +12,7 @@ private:
 	Snake* cobra;
 	Level* nivel;
 	vector<char> direcoes;
-	int score;
-
+	int score;	
 public:
 	Player(Snake* cobra, Level* nivel);
 

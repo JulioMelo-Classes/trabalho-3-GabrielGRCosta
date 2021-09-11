@@ -3,14 +3,14 @@
 #include <sstream>
 #include <random>
 #include <utility>
-#include "Snake.h"
 #include "Level.h"
+#include "Snake.h"
 #include <string>
 
 using namespace std;
 
 Level::Level(string arquivo, Snake* cobra) {
-	this->cobra = cobra;
+	this->cobra = cobra;	
 
 	ifstream file(arquivo);
 	if (!file.is_open()){
@@ -55,7 +55,9 @@ void Level::gerar_mapa(){
 		for(int j=0; j<this->Largura; j++){
 			if (this->Mapa[i][j] == '*')
 				this->Mapa[i][j] = ' ';
-			if (this->cobra->check_phead(i, j) == true)
+			if (this->Mapa[i][j] == '#')
+				cout<<'#';
+			else if (this->cobra->check_phead(i, j) == true)
 				cout<<'@'; //V < > ^
 			else if (this->cobra->check_pbody(make_pair(i, j)) == true)
 				cout<<'o';
@@ -64,6 +66,10 @@ void Level::gerar_mapa(){
 		}
 		cout << endl;
 	}
+}
+
+void Level::imprimir_status(){
+	cout<<"Vidas: "<<cobra->get_vida()<<" Comidas: "<<cobra->get_comida()<<" Score: "<<cobra->get_score()<<endl;
 }
 
 pair<int,int> Level::pfood(){

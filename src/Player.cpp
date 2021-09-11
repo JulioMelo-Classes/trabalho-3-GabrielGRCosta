@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include "../include/Snake.h"
-#include "../include/Level.h"
-#include "../include/Player.h"
+#include "Player.h"
+#include "Snake.h"
+#include "Level.h"
+
 
 using namespace std;
 
 Player::Player(Snake* cobra, Level* nivel){
 	this->cobra = cobra;
-vector <pair<int,int>> cauda;
+        vector <pair<int,int>> cauda;
 	this->nivel = nivel;
-	this->score = score;
+	this->score = 0;
 }
 
 bool Player::find_solution(){
@@ -75,11 +76,27 @@ bool Player::find_solution(){
 	}
 }
 
+int Player::get_score(){
+	int score = 0;
+	if(direcoes.size() < 5){
+		score += 100;
+	}
+	else if(direcoes.size() > 5 && direcoes.size() < 15){
+		score += 50;
+	}
+	else if(direcoes.size() > 50 && direcoes.size() < 100){
+		score +=2;
+	}
+	return score;
+}
+
 bool Player::find_solution2(){
 	vector <pair<int,int>> paths;
 	direcoes.clear();
 	Snake cobratoken(cobra);
-        return find_solution3(cobratoken,paths);
+        bool teste = find_solution3(cobratoken,paths);
+	this->score = get_score();
+	return teste;
 }
 
 
@@ -176,16 +193,34 @@ bool Player::direcoes_empty(){
 	return false;
 }
 
-int Player::get_score(){
-	if(direcoes.size() < 5){
-		score += 100;
-	}
-	else if(direcoes.size() > 5 && direcoes.size() < 15){
-		score += 50;
-	}
-	else if(direcoes.size() > 50 && direcoes.size() < 100){
-		score +=2;
-	}
-	return score;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

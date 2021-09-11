@@ -29,9 +29,10 @@ Snake::Snake(string arquivo){
 		a++;
 	}
 	file.close();
-
+	this->vida = 5;
 	this->direcao = 'N';
 	this->Comida = 0;
+	this->score = 0;
 }
 
 Snake::Snake(Snake* parametro){
@@ -138,4 +139,13 @@ void Snake::respawn(){
 	this->vida--;
 	this->cabeca = save_point;
 	this->cauda.clear();
+	this->direcao = 'N';
+}
+
+void Snake::add_score(int a){
+	this->score += a;
+} 
+
+int Snake::get_score(){
+	return score;
 }

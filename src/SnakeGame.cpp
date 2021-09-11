@@ -59,13 +59,14 @@ void SnakeGame::update(){
 				this->player.find_solution2();
 			if (this->player.direcoes_empty()){
 				cout<<"viado";
-				exit(1);
+				//exit(1);
 				this->player.find_solution();
 			}
 			char direcao = this->player.next_move();
 			if (this->nivel.check_pos(this->cobra.token(direcao)) == '$') {
 				this->nivel.generate_food();
-				this->cobra.more_food();	
+				this->cobra.more_food();
+				this->cobra.add_score(this->player.get_score());	
 				if(this->nivel.check_mode(this->nivel.get_modo())){ 
     					this->cobra.increase();
 				}
@@ -104,6 +105,7 @@ void SnakeGame::render(){
 	switch(state){
 		case RUNNING:
 			this->nivel.gerar_mapa();
+			this->nivel.imprimir_status();
 			break;
 		case WAITING_USER:
 			cout<<"Você quer continuar com o jogo? (s/n)"<<endl;

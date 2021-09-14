@@ -53,7 +53,9 @@ bool Player::find_solution(){
 				direcoes.push_back('L');
 				break;
 			case 3:
-				if(cobratoken.get_direcao() == 'L' || nivel->check_pos(cobratoken.token('O')) == '#' || cobratoken.check_pbody(cobratoken.token('O')) == true){
+				if(cobratoken.get_direcao() == 'L' ||
+				   nivel->check_pos(cobratoken.token('O')) == '#' ||
+				   cobratoken.check_pbody(cobratoken.token('O')) == true){
 					break;
 				}
 				cobratoken.move('O');
@@ -192,35 +194,4 @@ bool Player::direcoes_empty(){
 	}
 	return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

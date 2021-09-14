@@ -94,7 +94,7 @@ bool Player::find_solution2(){
 	vector <pair<int,int>> paths;
 	direcoes.clear();
 	Snake cobratoken(cobra);
-        bool teste = find_solution3(cobratoken,paths);
+  bool teste = find_solution3(cobratoken,paths);
 	this->score = get_score();
 	return teste;
 }

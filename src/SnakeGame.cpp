@@ -58,7 +58,6 @@ void SnakeGame::update(){
 			if (this->player.direcoes_empty())
 				this->player.find_solution2();
 			if (this->player.direcoes_empty()){
-				cout<<"viado";
 				//exit(1);
 				this->player.find_solution();
 			}

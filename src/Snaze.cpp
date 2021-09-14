@@ -17,13 +17,13 @@ int main(int argc, char *argv[]){
 	string arquivo(argv[1]);  
 	
 	/*ifstream file(arquivo);
-  if (!file.is_open()){
-    cout<<"Arquivo não encontrado"<<endl;
-    exit(1);
-  }
-  string linha;
-  while (getline(file, linha)) {
-  	if(linha == "&"){
+	if (!file.is_open()){
+    		cout<<"Arquivo não encontrado"<<endl;
+    		exit(1);
+  	}
+  	string linha;
+  	while (getline(file, linha)) {
+  		if(linha == "&"){
 			cout<<"ola";
  			ofstream outfile;
 			outfile.open("./temp/test.txt");
@@ -32,31 +32,16 @@ int main(int argc, char *argv[]){
 			}	
 			outfile.close();
 			linhas.clear();
-  	}
+  		}						
 		else{	
 			linhas.push_back(linha);
 		}
-  }	
-  file.close();*/
-	string arquivo(argv[1]);
+	}	
+  	file.close();*/
 	
- 	/*ifstream file(arquivo);
-        if (!file.is_open()){
-      		cout<<"Arquivo não encontrado"<<endl;
-                  exit(1);
-    	}
-        string linha;
-        stringstream ss;
-        while (getline(file, linha)) {
-        	if(linha == " "){
- 			ofstream outfile ("test.txt");
-			outfile.close();
-        	}
-        }	
-       	file.close();*/
-       	SnakeGame game(arquivo);
+ 	SnakeGame game(arquivo);
 
-       game.loop();
+        game.loop();
 
   return 0;
 }
